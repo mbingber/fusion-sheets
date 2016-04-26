@@ -1,0 +1,23 @@
+sheet-view {
+    .title {
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    input {
+        padding: 0px 5px;
+    }
+    .idx {
+        padding-right: 5px;
+        color: green;
+        font-size: 8px;
+    }
+    .row-select input {
+        background-color: #67f4f1;
+    }
+    .selected {
+        background-color: #ddd;
+    }
+    .above-table {
+        width: 100%;
+    }
+}

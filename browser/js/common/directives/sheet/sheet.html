@@ -1,0 +1,17 @@
+<div>
+    <input class="above-table" ng-model="selectedCell.row[getKey(selectedCell.title)]">
+    <table>
+        <th>
+            <td></td>
+            <td class="title" ng-repeat="title in sheet.titles">{{ title }}</td>
+        </th>
+        <tr ng-class="{'row-select': row === selectedRow}" ng-repeat="row in sheet.rows">
+            <td ng-click="deleteRow($index)">x</td>
+            <td ng-click="selectRow(row)" class="idx">{{ $index + 1 }}</td>
+            <td ng-repeat="title in sheet.titles">
+                <input ng-class="{selected: selectedCell.row === row && selectedCell.title === title}" ng-model="row[getKey(title)]" ng-click="select(row, title)">
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-primary" ng-click="addRow()">Add Row</button>
+</div>
