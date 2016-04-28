@@ -13,8 +13,31 @@ app.directive('sheetView', function($timeout) {
                 }
             });
 
+            function navHelper(key, amount) {
+                var idx = scope.sheet[key + 's'].indexOf(scope.selectedCell[key]);
+                idx += amount;
+                if(idx < 0) idx += scope.sheet[key + 's'].length;
+                idx %= scope.sheet[key + 's'].length;
+                scope.selectedCell[key] = scope.sheet[key + 's'][idx];
+            }
+
+            scope.navigate = function(e) {
+                console.log(e.srcElement)
+                if(scope.selectedCell.title) {
+                    if(e.keyCode === 37) {
+                        navHelper('title', -1);
+                    } else if (e.keyCode === 39) {
+                        navHelper('title', 1);
+                    } else if (e.keyCode === 38) {
+                        navHelper('row', -1);
+                    } else if (e.keyCode === 40) {
+                        navHelper('row', 1);
+                    }
+                }
+            }
+
             scope.getKey = function(title) {
-                return title.toLowerCase().split(' ').join('_');
+                if(title) return title.toLowerCase().split(' ').join('_');
             };
 
             scope.selectedCell = {
