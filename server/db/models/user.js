@@ -1,4 +1,4 @@
-v'use strict';
+'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
