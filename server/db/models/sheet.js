@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: true
+        default: 'Untitled'
     },
     columnTitles: [String],
     rows: [mongoose.Schema.Types.Mixed]

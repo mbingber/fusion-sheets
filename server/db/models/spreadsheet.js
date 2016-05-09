@@ -18,13 +18,17 @@ var schema = new mongoose.Schema({
     }]
 });
 
-schema.methods.newSheet = function() {
+schema.methods.addSheet = function() {
+    var sheet, self = this;
     return Sheet.create({
         user: this.user
-    }).then(function(sheet) {
-        this.sheets.push(sheet);
-        return this.save();
-    })
+    }).then(function(s) {
+        sheet = s;
+        self.sheets.push(sheet);
+        return self.save();
+    }).then(function() {
+        return sheet;
+    });
 }
 
 mongoose.model('Spreadsheet', schema);

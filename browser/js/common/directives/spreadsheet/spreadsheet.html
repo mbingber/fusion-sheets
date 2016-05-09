@@ -1,5 +1,7 @@
 <h1>{{ spreadsheet.title }}</h1>
-<uib-tabset active="active">
+<uib-tabset>
   <uib-tab ng-repeat="sheet in spreadsheet.sheets" index="$index" heading="{{ sheet.title }}" active="sheet.active">
     <sheet-view sheet="sheet"></sheet-view>
+  </uib-tab>
+  <uib-tab index="spreadsheet.sheets.length" heading="+" ng-click="addSheet()"></uib-tab>
 </uib-tabset>

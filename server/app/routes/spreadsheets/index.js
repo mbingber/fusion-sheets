@@ -18,3 +18,10 @@ router.param('spreadsheetId', function(req, res, next) {
         next();
     }, next);
 });
+
+router.post('/:spreadsheetId/addSheet', function(req, res, next) {
+    req.spreadsheet.addSheet()
+    .then(function(newSheet) {
+        res.send(newSheet);
+    }, next);
+});

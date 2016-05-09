@@ -17,4 +17,15 @@ router.put('/:sheetId/updateRows', function(req, res, next) {
     .then(function() {
         res.sendStatus(202);
     }, next);
-})
+});
+
+router.post('/:sheetId/addColumn', function(req, res, next) {
+    if(req.sheet.columnTitles.indexOf(req.body.columnTitle) > -1) {
+        next(new Error('this sheet already has that column'));
+    }
+    req.sheet.columnTitles.push(req.body.columnTitle);
+    req.sheet.save()
+    .then(function() {
+        res.sendStatus(201);
+    }, next);
+});

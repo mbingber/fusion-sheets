@@ -67,6 +67,10 @@ app.directive('sheetView', function($timeout, SheetFactory) {
                 scope.sheet.rows.splice(idx,1);
             };
 
+            scope.addColumn = function() {
+                SheetFactory.addColumn(scope.sheet, scope.newColumnTitle)
+            }
+
             scope.updateRows = SheetFactory.updateRows.bind(null, scope.sheet);
         }
     }

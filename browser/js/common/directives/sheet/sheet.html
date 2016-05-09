@@ -4,6 +4,7 @@
         <th>
             <td></td>
             <td class="title" ng-repeat="title in sheet.columnTitles">{{ title }}</td>
+            <td><span ng-click="addColumn()">+</span><input type="text" ng-model="newColumnTitle" placeholder="Add Column"></td>
         </th>
         <tr ng-class="{'row-select': row === selectedRow}" ng-repeat="row in sheet.rows">
             <td class="delete" ng-click="deleteRow($index)">x</td>
