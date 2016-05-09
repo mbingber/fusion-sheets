@@ -1,9 +1,9 @@
-app.directive('spreadsheet', function() {
+app.directive('spreadsheetView', function() {
     return {
         restrict: 'E',
         templateUrl: 'js/common/directives/spreadsheet/spreadsheet.html',
         scope: {
-            sheets: '='
+            spreadsheet: '='
         },
         link: function(scope, element, attr) {
 

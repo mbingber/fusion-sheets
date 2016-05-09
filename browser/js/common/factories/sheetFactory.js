@@ -1,26 +1,15 @@
-app.factory('SheetFactory', function() {
+app.factory('SheetFactory', function($http) {
     var sheetFactory = {};
-    sheetFactory.getSheet = function() {
-        return {
-            name: 'Test Sheet',
-            titles: ['Name', 'Amount', 'Comment', 'Has Space'],
-            rows: [{
-                name: 'Mike',
-                amount: 100,
-                comment: 'nice!',
-                has_space: 'this works'
-            }, {
-                name: 'Mark',
-                amount: 100,
-                comment: 'super!',
-                has_space: 'yeppers'
-            }, {
-                name: 'Zeke',
-                amount: 50,
-                comment: 'totally rad!',
-                has_space: 'uh huh'
-            }]
-        };
+
+    sheetFactory.getSpreadsheet = function() {
+        return $http.get('/api/spreadsheets/')
+        .then(function(res) {
+            return res.data[0] || res.data;
+        });
+    }
+
+    sheetFactory.updateRows = function(sheet) {
+        $http.put(`/api/sheets/${sheet._id}/updateRows`, sheet);
     }
 
     return sheetFactory;

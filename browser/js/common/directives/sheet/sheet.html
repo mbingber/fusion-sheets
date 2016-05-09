@@ -3,13 +3,13 @@
     <table>
         <th>
             <td></td>
-            <td class="title" ng-repeat="title in sheet.titles">{{ title }}</td>
+            <td class="title" ng-repeat="title in sheet.columnTitles">{{ title }}</td>
         </th>
         <tr ng-class="{'row-select': row === selectedRow}" ng-repeat="row in sheet.rows">
             <td class="delete" ng-click="deleteRow($index)">x</td>
             <td ng-click="selectRow(row)" class="idx">{{ $index + 1 }}</td>
-            <td ng-repeat="title in sheet.titles">
-                <input id="{{ $parent.$index + 1 }}-{{ getKey(title) }}" ng-class="{selected: selectedCell.row === row && selectedCell.title === title}" ng-model="row[getKey(title)]" ng-click="select(row, title)">
+            <td ng-repeat="title in sheet.columnTitles">
+                <input id="{{ $parent.$index + 1 }}-{{ getKey(title) }}" ng-class="{selected: selectedCell.row === row && selectedCell.title === title}" ng-model="row[getKey(title)]" ng-change="updateRows()" ng-click="select(row, title)">
             </td>
         </tr>
     </table>

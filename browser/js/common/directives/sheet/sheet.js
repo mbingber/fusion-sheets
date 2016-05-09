@@ -1,4 +1,4 @@
-app.directive('sheetView', function($timeout) {
+app.directive('sheetView', function($timeout, SheetFactory) {
     return {
         restrict: 'E',
         templateUrl: 'js/common/directives/sheet/sheet.html',
@@ -66,6 +66,8 @@ app.directive('sheetView', function($timeout) {
             scope.deleteRow = function(idx) {
                 scope.sheet.rows.splice(idx,1);
             };
+
+            scope.updateRows = SheetFactory.updateRows.bind(null, scope.sheet);
         }
     }
 })
