@@ -5,24 +5,29 @@ app.directive('sheetView', function($timeout) {
         scope: {
             sheet: '='
         },
-        link: function(scope, element, attr) {
+        link: function(scope, element) {
             element.on('click', function(e) {
-                if(e.srcElement.classList[0] !== 'idx') {
+                if(e.srcElement && e.srcElement.classList[0] !== 'idx') {
                     scope.selectedRow = {};
                     $timeout();
                 }
             });
 
+            function getIdOfCell(title, row) {
+                var rowIdx = scope.sheet.rows.indexOf(row) + 1;
+                var titleKey = scope.getKey(title);
+                return `#${rowIdx}-${titleKey}`;
+            }
             function navHelper(key, amount) {
                 var idx = scope.sheet[key + 's'].indexOf(scope.selectedCell[key]);
                 idx += amount;
                 if(idx < 0) idx += scope.sheet[key + 's'].length;
                 idx %= scope.sheet[key + 's'].length;
                 scope.selectedCell[key] = scope.sheet[key + 's'][idx];
+                $(getIdOfCell(scope.selectedCell.title, scope.selectedCell.row)).focus();
             }
 
             scope.navigate = function(e) {
-                console.log(e.srcElement)
                 if(scope.selectedCell.title) {
                     if(e.keyCode === 37) {
                         navHelper('title', -1);

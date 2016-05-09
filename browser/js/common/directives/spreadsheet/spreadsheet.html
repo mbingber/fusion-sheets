@@ -1,0 +1,4 @@
+<uib-tabset active="active">
+  <uib-tab ng-repeat="sheet in sheets" index="$index" heading="{{ sheet.name }}" active="sheet.active">
+    <sheet-view sheet="sheet"></sheet-view>
+</uib-tabset>

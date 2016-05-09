@@ -8,4 +8,5 @@ app.config(function ($stateProvider) {
 
 app.controller('HomeCtrl', function($scope, SheetFactory) {
     $scope.sheet = SheetFactory.getSheet();
+    $scope.sheets = [SheetFactory.getSheet(), SheetFactory.getSheet(), SheetFactory.getSheet()]
 });

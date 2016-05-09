@@ -2,6 +2,7 @@ app.factory('SheetFactory', function() {
     var sheetFactory = {};
     sheetFactory.getSheet = function() {
         return {
+            name: 'Test Sheet',
             titles: ['Name', 'Amount', 'Comment', 'Has Space'],
             rows: [{
                 name: 'Mike',

@@ -9,7 +9,7 @@
             <td class="delete" ng-click="deleteRow($index)">x</td>
             <td ng-click="selectRow(row)" class="idx">{{ $index + 1 }}</td>
             <td ng-repeat="title in sheet.titles">
-                <input ng-class="{selected: selectedCell.row === row && selectedCell.title === title}" ng-model="row[getKey(title)]" ng-click="select(row, title)">
+                <input id="{{ $parent.$index + 1 }}-{{ getKey(title) }}" ng-class="{selected: selectedCell.row === row && selectedCell.title === title}" ng-model="row[getKey(title)]" ng-click="select(row, title)">
             </td>
         </tr>
     </table>
