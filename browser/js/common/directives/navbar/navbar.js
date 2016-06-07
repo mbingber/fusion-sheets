@@ -1,13 +1,20 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $timeout) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
-        link: function (scope) {
+        link: function (scope, element) {
+
+            $timeout(function() {
+                if($state.is('login')) element.hide();
+                else element.show();
+            });
 
             scope.items = [
-                { label: 'Home', state: 'home' }
+                { label: 'Invoice Generator', state: 'home.generator' },
+                { label: 'Calendar Manager', state: 'home.calendar' },
+                { label: 'Main Sheets', state: 'home.main'}
             ];
 
             scope.user = null;
@@ -16,9 +23,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 return AuthService.isAuthenticated();
             };
 
+            scope.login = function() {
+                AuthService.login().then(function() {
+                    $state.go('home.generator');
+                });
+            };
+
             scope.logout = function () {
                 AuthService.logout().then(function () {
-                   $state.go('home');
+                   $state.go('login');
                 });
             };
 

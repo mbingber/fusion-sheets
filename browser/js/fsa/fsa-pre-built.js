@@ -77,13 +77,12 @@
                 return $q.when(Session.user);
             }
 
-            return $q.when({});
             // Make request GET /session.
             // If it returns a user, call onSuccessfulLogin with the response.
             // If it returns a 401 response, we catch it and instead resolve to null.
-            // return $http.get('/session').then(onSuccessfulLogin).catch(function () {
-            //     return null;
-            // });
+            return $http.get('/session').then(onSuccessfulLogin).catch(function () {
+                return null;
+            });
 
         };
 

@@ -1,10 +1,18 @@
 app.factory('SheetFactory', function($http) {
     var sheetFactory = {};
 
-    sheetFactory.getSpreadsheet = function() {
-        return $http.get('/api/spreadsheets/')
+    sheetFactory.getMyInvoiceGenerator = function() {
+        console.log('in factory function')
+        return $http.get('/api/spreadsheets/invoiceGenerator')
         .then(function(res) {
             return res.data[0] || res.data;
+        });
+    }
+
+    sheetFactory.getMyMainSheets = function() {
+        return $http.get('/api/spreadsheets/main')
+        .then(function(res) {
+            return res.data;
         });
     }
 

@@ -5,6 +5,7 @@ module.exports = router;
 router.use('/members', require('./members'));
 router.use('/spreadsheets', require('./spreadsheets'));
 router.use('/sheets', require('./sheets'));
+router.use('/calendar', require('./calendar'));
 
 // Make sure this is after all of
 // the registered routes!

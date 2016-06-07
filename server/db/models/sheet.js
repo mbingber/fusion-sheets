@@ -26,4 +26,19 @@ schema.methods.updateRows = function(rows) {
     return this.save();
 }
 
+schema.statics.copy = function(sheet, userId) {
+    return this.create({
+        user: userId,
+        title: sheet.title,
+        columnTitles: sheet.columnTitles.slice(),
+        rows: sheet.rows.map(function(row) {
+            var newRow = {};
+            Object.keys(row).forEach(function(key) {
+                newRow[key] = row[key];
+            });
+            return newRow;
+        })
+    });
+}
+
 mongoose.model('Sheet', schema);

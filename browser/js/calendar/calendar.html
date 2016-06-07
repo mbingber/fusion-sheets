@@ -1,0 +1,33 @@
+<br>
+<label>Select which calendars you want to bill from</label>
+<ul class="no-bullets">
+  <li ng-repeat="cal in calendarList.items">
+    <input type="checkbox" ng-model="cal.checked"> {{ cal.summary }}
+  </li>
+</ul>
+<div class="row">
+  <div class="col-md-6">
+    <label>Start of billing period</label>
+    <p class="input-group col-md-8">
+      <input type="text" class="form-control" uib-datepicker-popup ng-model="startDate" is-open="start.opened">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="start.opened = !start.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+    <label>End of billing period</label>
+    <p class="input-group col-md-8">
+      <input type="text" class="form-control" uib-datepicker-popup ng-model="endDate" is-open="end.opened">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="end.opened = !end.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+    <button class="btn btn-primary" ng-disabled="!(startDate && endDate)" ng-click="getEvents()">Grab events</button>
+  </div>
+  <div class="col-md-6">
+    <div ng-show="events">
+      <p>Found {{ events.length }} appointments</p>
+      <button type="button" class="btn btn-primary" ng-click="generateSheets()">Generate Spreadsheets</button>
+      <p ng-show="complete">Check out the results in the Main Sheets tab</p>
+    <div>
+  </div>
+</div>

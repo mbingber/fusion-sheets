@@ -29,16 +29,7 @@ var seedUsers = function () {
 
   var users = [
     {
-      email: 'testing@fsa.com',
-      password: 'password'
-    },
-    {
-      email: 'obama@gmail.com',
-      password: 'potus'
-    },
-    {
-      email: 'mark@fusionmath.com',
-      password: 'mark'
+      email: 'sample@sample.com'
     }
   ];
 
@@ -49,7 +40,7 @@ var seedUsers = function () {
 var seedSheets = function(users) {
 
   var sheets = [{
-    user: users[2],
+    user: users[0],
     title: 'Tutors',
     columnTitles: ['Tutor Name', 'Username', 'One to One Rate', 'Drop In Rate', 'Classroom Rate', 'Chargeout Rate'],
     rows: [{
@@ -62,7 +53,7 @@ var seedSheets = function(users) {
       drop_in_rate: Infinity
     }]
   }, {
-    user: users[2],
+    user: users[0],
     title: 'Client Discounts',
     columnTitles: ['Client', 'Discount Percent', 'Discount Dollar', 'Student', 'Current', 'Tutor', 'Reason', 'Other Consideration'],
     rows: [{
@@ -80,6 +71,44 @@ var seedSheets = function(users) {
       tutor: 'Mark Batho',
       reason: 'Feel the bern'
     }]
+  }, {
+    user: users[0],
+    title: 'Client CustNum',
+    columnTitles: ['Cust Num', 'Last Name', 'First Name', 'Client', 'Pay Type'],
+    rows: [{
+      cust_num: 10001,
+      last_name: 'House',
+      first_name: 'White',
+      client: 'House, White',
+      pay_type: 'check'
+    }, {
+      cust_num: 10002,
+      last_name: 'Sanders',
+      first_name: 'Bernie',
+      client: 'Sanders, Bernie',
+      pay_type: 'cc'
+    }]
+  }, {
+    user: users[0],
+    title: 'Subjects',
+    columnTitles: ['Subject', 'Rate'],
+    rows: [{
+      subject: 'Algebra 2',
+      rate: '88'
+    }]
+  }, {
+    user: users[0],
+    title: 'Tags',
+    columnTitles: ['Tag', 'Charge', 'Pay', 'Charge Discount', 'Pay Discount'],
+    rows: [{
+      tag: 'after 5pm cancel',
+      charge_discount: 50,
+      pay_discount: 50
+    }, {
+      tag: 'same day booking',
+      charge: 20,
+      pay: 10
+    }]
   }];
 
   return Sheet.createAsync(sheets);
@@ -88,8 +117,9 @@ var seedSheets = function(users) {
 var seedSpreadsheet = function(users, sheets) {
 
   var spreadsheet = {
-    user: users[2],
-    title: 'Invoice Generator',
+    user: users[0],
+    title: 'Sample Invoice Generator',
+    category: 'Invoice Generator',
     sheets: sheets
   }
 

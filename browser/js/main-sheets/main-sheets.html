@@ -1,0 +1,3 @@
+<p ng-if="!spreadsheets.length">You must generate your main sheet from the Calendar Manager</p>
+<select ng-show="spreadsheets.length" ng-options="ss as ss.title for ss in spreadsheets" ng-model="spreadsheet"></select>
+<spreadsheet-view ng-if="spreadsheets.length" spreadsheet="spreadsheet"></spreadsheet-view>
