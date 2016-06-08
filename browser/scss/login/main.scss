@@ -2,3 +2,18 @@
   width: 60%;
   margin: 0 auto;
 }
+
+.jumbotron {
+  text-align: center;
+}
+
+.jumbotron > * {
+  margin: 30px auto;
+}
+
+.signin {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+

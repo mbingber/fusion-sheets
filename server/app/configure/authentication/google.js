@@ -8,7 +8,7 @@ var UserModel = mongoose.model('User');
 module.exports = function (app) {
 
     var googleConfig = app.getValue('env').GOOGLE;
-
+    console.log('!!!!!!!!!!!!!!!!', googleConfig);
     var googleCredentials = {
         clientID: googleConfig.clientID,
         clientSecret: googleConfig.clientSecret,
